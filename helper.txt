@@ -1,0 +1,31 @@
+import sqlite3 from "sqlite3";
+import { open, Database } from "sqlite";
+
+// Open the database connection
+const dbPromise = open({
+  filename: String(process.env.DATABASE_FILENAME),
+  driver: sqlite3.Database,
+});
+
+export default dbPromise;
+
+// Create the users and tokens tables if they don't exist yet
+
+(async () => {
+  const db: Database<sqlite3.Database, sqlite3.Statement> = await dbPromise;
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+
+"sqlite": "^5.1.1",
+"sqlite3": "^5.1.7",
+
+# Enter the port number for your project
+PORT=0000
+
+# Enter the JWT secret key for your projec
+JWT_SECRET=abcd
+
+#enter the file name for your project database
+DATABASE_FILENAME=./database.db
